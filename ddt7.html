@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>Chat App</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<!-- Alert -->
+		<div id="alert">
+			<p></p>
+		</div>
+
+		<!-- Blur -->
+		<div id="blur-overlay"></div>
+
+		<!-- Chat -->
+		<div id="chat">
+			<div id="messages"></div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="user-sidebar">
+			<h3>Chat Users</h3>
+			<p>Click a user to filter for their messages only</p>
+			<ul class="users everyone">
+				<li data-sidebar-user="everyone" class="user selected"><a href="javascript:Chat.ui.filterByUsername('everyone')">Everyone</a></li>
+			</ul>
+			<ul class="users">
+			</ul>
+		</div>
+
+		<!-- Choose Username -->
+		<div id="username-modal" class="show">
+			<div class="view show" data-username-view="signin">
+				<h3>Join Chat</h3>
+				<div class="field">
+					<input class="signin-username" type="text" placeholder="Username">
+				</div>
+				<div class="field">
+					<input class="signin-password" type="password" placeholder="Password">
+				</div>
+				<div class="field">
+					<button onclick="javascript:Chat.session.signin()">Start Chatting</button>
+					<a href="javascript:void(0);" onclick="javascript:Chat.ui.changeView('signup')">create an account</a>
+				</div>
+			</div>
+			<div class="view" data-username-view="signup">
+				<h3>Create Account</h3>
+				<div class="field">
+					<input class="signup-username" type="text" placeholder="Username">
+				</div>
+				<div class="field">
+					<input class="signup-password" type="password" placeholder="Password">
+				</div>
+				<div class="field">
+					<input class="signup-confpassword" type="password" placeholder="Confirm Password">
+				</div>
+				<div class="field">
+					<button onclick="javascript:Chat.session.signup()">Create account and start chatting</button>
+					<a href="javascript:void(0);" onclick="javascript:Chat.ui.changeView('signin')">sign in</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Message Send View -->
+		<div id="message-send-view">
+			<div id="username-selected">
+			</div>
+			<div id="message-field">
+				<input type="text" placeholder="Type message ......then press enter or click send">
+			</div>
+			<button onclick="javascript:Chat.sendMessage()">Send</button>
+		</div>
+		<script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript" src="script.js" defer></script>
+	</body>
+</html>
